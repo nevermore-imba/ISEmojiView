@@ -171,6 +171,16 @@ extension EmojiCollectionView: UICollectionViewDelegate {
             dismissPopView(false)
             return
         }
+
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            UIView.animate(withDuration: 0.2) {
+                cell.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+            } completion: { _ in
+                UIView.animate(withDuration: 0.2) {
+                    cell.transform = .identity
+                }
+            }
+        }
         
         let emojiCategory = emojis[indexPath.section]
         let emoji = emojiCategory.emojis[indexPath.item]
