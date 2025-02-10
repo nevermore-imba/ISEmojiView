@@ -112,7 +112,9 @@ internal class EmojiCollectionView: UIView {
     
     internal func updateRecentsEmojis(_ emojis: [Emoji]) {
         self.emojis[0].emojis = emojis
-        collectionView.reloadSections(IndexSet(integer: 0))
+        UIView.performWithoutAnimation {
+            self.collectionView.reloadSections(IndexSet(integer: 0))
+        }
     }
     
     internal func scrollToCategory(_ category: Category) {
